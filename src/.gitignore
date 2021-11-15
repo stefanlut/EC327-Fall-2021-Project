@@ -1,4 +1,5 @@
 *.o
 *.out
 *.exe
-*.dSYM/
+main.dSYM/
+.DS_Store
