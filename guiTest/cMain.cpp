@@ -43,7 +43,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 {
 	if (button_Pressed && has_COVID)
 	{
-		std::ofstream resultsFile("example.txt"); // This filename should probably be something like Day_Month_Year_Results.txt
+		std::ofstream resultsFile("Test Results"); // This filename should probably be something like Day_Month_Year_Results.txt
 		resultsFile << "Date of Test: " << CurrentDate() << endl;
 		resultsFile << "Has COVID-19: " << "Yes" << std::endl;
 		resultsFile.close();
@@ -51,7 +51,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 	}
 	else if (button_Pressed && !has_COVID)
 	{
-		std::ofstream resultsFile("example.txt"); // This filename should probably be something like Day_Month_Year_Results.txt
+		std::ofstream resultsFile("Test Results"); // This filename should probably be something like Day_Month_Year_Results.txt
 		resultsFile << "Date of Test: " << CurrentDate() << endl;
 		resultsFile << "Has COVID-19: " << "No" << std::endl;
 		resultsFile.close();
