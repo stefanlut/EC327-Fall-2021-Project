@@ -34,8 +34,8 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 		m_txt1 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(200, 475), wxSize(150, 50));
 		m_btn4 = new wxButton(this, 10004, "Enter", wxPoint(375, 475), wxSize(150, 50));
 		m_btn4->SetBackgroundColour(wxColor(115, 147, 179));
-		m_text1 = new wxStaticText(this, wxID_ANY, "Please schdule a Covid vaccine booster shot if You haven't.", wxPoint(25, 10), wxSize(400, 15));
-		m_btn5 = new wxButton(this, 10005, "Schdule Now", wxPoint(450, 10), wxSize(100, 25));
+		m_text1 = new wxStaticText(this, wxID_ANY, "Please schdule a Covid vaccine booster shot if you haven't.", wxPoint(25, 10), wxSize(400, 15));
+		m_btn5 = new wxButton(this, 10005, "Schedule Now", wxPoint(450, 10), wxSize(100, 25));
 		m_btn5->SetBackgroundColour(wxColor(115, 147, 179));
 		m_text1->SetBackgroundColour(wxColor(255, 00, 00));
 		m_MenuBar = new wxMenuBar();
@@ -43,7 +43,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 
 		wxMenu* menuFile = new wxMenu();
 		menuFile->Append(10006, "Service Avaliable");
-		menuFile->Append(10007, "Schdule Apointment");
+		menuFile->Append(10007, "Schedule Apointment");
 		menuFile->Append(10008, "Doctors info");
 		menuFile->Append(10009, "Quit");
 		menuFile->Append(10011, "About");
@@ -53,7 +53,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 	if (global == 2) {
 		m_text1 = new wxStaticText(this, wxID_ANY, "Covid Vaccine Booster shot Appointment Registration", wxPoint(25, 10), wxSize(400, 50));
 		m_text1->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt3 = new wxTextCtrl(this, wxID_ANY, "Enter A dates (M,T,W Th, F): ", wxPoint(50, 100), wxSize(200, 50));
+		m_txt3 = new wxTextCtrl(this, wxID_ANY, "Enter A Date (M,T,W Th, F): ", wxPoint(50, 100), wxSize(200, 50));
 		m_txt3->SetBackgroundColour(wxColor(115, 147, 179));
 		m_txt4 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 100), wxSize(150, 50));
 		m_txt5 = new wxTextCtrl(this, wxID_ANY, "Enter A Location:\n(808 OR BUMC):", wxPoint(50, 200), wxSize(200, 50));
@@ -224,7 +224,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 {
 	if (button_Pressed && has_COVID)
 	{
-		std::ofstream resultsFile("Output_File.txt"); // This filename should probably be something like Day_Month_Year_Results.txt
+		std::ofstream resultsFile("Output_File.txt"); 
 		resultsFile << "Date of Test: " << CurrentDate() << std::endl;
 		resultsFile << "Has COVID-19: " << "Yes" << std::endl;
 		resultsFile.close();
@@ -232,7 +232,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 	}
 	else if (button_Pressed && !has_COVID)
 	{
-		std::ofstream resultsFile("Output_Filetxt"); // This filename should probably be something like Day_Month_Year_Results.txt
+		std::ofstream resultsFile("Output_File.txt"); 
 		resultsFile << "Date of Test: " << CurrentDate() << std::endl;
 		resultsFile << "Has COVID-19: " << "No" << std::endl;
 		resultsFile.close();
@@ -243,7 +243,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 
 void cMain::OnEClicked(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("example.txt");
+	std::ofstream resultsFile("Output_File.txt");
 	resultsFile << "Appointment Date: " << m_txt4->GetValue() << std::endl;
 	resultsFile << "Location:" << m_txt6->GetValue() << std::endl;
 	resultsFile << "Name & ID: " << m_txt8->GetValue() << std::endl;
@@ -255,7 +255,7 @@ void cMain::OnEClicked(wxCommandEvent& evt)
 }
 void cMain::OnExit2(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("example.txt");
+	std::ofstream resultsFile("Output_File.txt");
 	resultsFile << "Appointment Date: " << m_txt15->GetValue() << std::endl;
 	resultsFile << "Location:" << m_txt16->GetValue() << std::endl;
 	resultsFile << "Name & ID: " << m_txt17->GetValue() << std::endl;
@@ -268,7 +268,7 @@ void cMain::OnExit2(wxCommandEvent& evt)
 }
 void cMain::OnEnterButtonClicked(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("example.txt");
+	std::ofstream resultsFile("Output_File.txt");
 	resultsFile << "SYMPTOMS PROVIDED: " << m_txt1->GetValue() << std::endl;
 	resultsFile.close();
 	global = 3;
