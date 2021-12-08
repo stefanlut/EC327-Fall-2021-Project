@@ -11,7 +11,7 @@ private:
 	bool button_Pressed = false;
 	wxToolBar* m_ToolBar = nullptr;
 	wxMenuBar* m_MenuBar = nullptr;
-
+	std::string CurrentDate();
 
 	void OnMenu1(wxCommandEvent& evt);
 	void OnMenu2(wxCommandEvent& evt);
