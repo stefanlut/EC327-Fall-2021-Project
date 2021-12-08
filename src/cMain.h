@@ -6,7 +6,7 @@ class cMain : public wxFrame
 {
 private:
 	bool has_COVID;
-	bool button_Pressed;
+	bool button_Pressed = false;
 public:
 	cMain();
 	~cMain();

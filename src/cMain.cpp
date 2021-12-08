@@ -1,14 +1,14 @@
 #include "cMain.h"
 #include <fstream>
 #include <iostream>
-wxBEGIN_EVENT_TABLE(cMain, wxFrame)
+wxBEGIN_EVENT_TABLE(cMain,wxFrame)
 
-EVT_BUTTON(10001, OnYesButtonClicked)
-EVT_BUTTON(10002, OnNoButtonClicked)
-EVT_BUTTON(10003, OnSaveButtonClicked)
+	EVT_BUTTON(10001, OnYesButtonClicked)
+	EVT_BUTTON(10002, OnNoButtonClicked)
+	EVT_BUTTON(10003, OnSaveButtonClicked)
 wxEND_EVENT_TABLE()
 
-cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), wxSize(800, 600)), has_COVID(false), button_Pressed(false)
+cMain::cMain() : wxFrame(nullptr,wxID_ANY,"TestGUI - EC327",wxPoint(30,30),wxSize(800,600))
 {
 	m_btn1 = new wxButton(this, 10001, "Yes", wxPoint(200, 300), wxSize(50, 20));
 	m_btn2 = new wxButton(this, 10002, "No", wxPoint(400, 300), wxSize(50, 20));
@@ -18,11 +18,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 }
 cMain::~cMain()
 {
-	delete m_btn1;
-	delete m_btn2;
-	delete m_btn3;
-	delete m_text;
-	delete m_msg;
+
 }
 
 void cMain::OnYesButtonClicked(wxCommandEvent& evt)
