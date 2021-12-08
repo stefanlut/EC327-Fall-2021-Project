@@ -18,7 +18,7 @@ EVT_BUTTON(10013, OnExit2)
 wxEND_EVENT_TABLE()
 bool cond;
 int global = 1;
-cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), wxSize(800, 600))
+cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), wxSize(800, 750))
 {
 	if (global == 1) {
 		m_btn1 = new wxButton(this, 10001, "Yes", wxPoint(180, 300), wxSize(50, 20));
@@ -26,7 +26,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 		m_btn2 = new wxButton(this, 10002, "No", wxPoint(400, 300), wxSize(50, 20));
 		m_btn2->SetBackgroundColour(wxColor(115, 147, 179));
 		m_btn3 = new wxButton(this, 10003, "Save Response", wxPoint(250, 400), wxSize(150, 20));
-		m_text = new wxStaticText(this, wxID_ANY, "Have you experienced a new onset of any of the following symptoms in the past 14 days?\nFever of 100�F or feeling unusually hot with shivering / chills, sore throat, new cough not related to a chronic condition, difficulty breathing / shortness of breath, severe fatigue, severe muscle aches, new loss of sense of taste or smell ? ", wxPoint(200, 100), wxSize(250, 150));
+		m_text = new wxStaticText(this, wxID_ANY, "Have you experienced a new onset of any of the following symptoms in the past 14 days?\nFever of 100\xB0 F or feeling unusually hot with shivering / chills, sore throat, new cough not related to a chronic condition, difficulty breathing / shortness of breath, severe fatigue, severe muscle aches, new loss of sense of taste or smell ? ", wxPoint(200, 100), wxSize(250, 150));
 		m_text->SetBackgroundColour(wxColor(115, 147, 179));
 		m_msg = new wxMessageDialog(this, "Results Saved!", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
 		m_txt2 = new wxTextCtrl(this, wxID_ANY, "Enter symtoms:", wxPoint(100, 475), wxSize(100, 30));
@@ -44,37 +44,38 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 		wxMenu* menuFile = new wxMenu();
 		menuFile->Append(10006, "Service Avaliable");
 		menuFile->Append(10007, "Schedule Apointment");
-		menuFile->Append(10008, "Doctors info");
+		menuFile->Append(10008, "Doctors Info");
 		menuFile->Append(10009, "Quit");
 		menuFile->Append(10011, "About");
 
-		m_MenuBar->Append(menuFile, "My Guides");
+		m_MenuBar->Append(menuFile, "Menu");
 	}
 	if (global == 2) {
 		m_text1 = new wxStaticText(this, wxID_ANY, "Covid Vaccine Booster shot Appointment Registration", wxPoint(25, 10), wxSize(400, 50));
 		m_text1->SetBackgroundColour(wxColor(115, 147, 179));
 		m_txt3 = new wxTextCtrl(this, wxID_ANY, "Enter A Date (M,T,W Th, F): ", wxPoint(50, 100), wxSize(200, 50));
 		m_txt3->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt4 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 100), wxSize(150, 50));
+		m_txt4 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 100), wxSize(150, 50));
 		m_txt5 = new wxTextCtrl(this, wxID_ANY, "Enter A Location:\n(808 OR BUMC):", wxPoint(50, 200), wxSize(200, 50));
 		m_txt5->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt6 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 200), wxSize(150, 50));
+		m_txt6 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 200), wxSize(150, 50));
 		m_txt7 = new wxTextCtrl(this, wxID_ANY, "Enter your name & ID:", wxPoint(50, 300), wxSize(200, 50));
 		m_txt7->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt8 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 300), wxSize(150, 50));
+		m_txt8 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 300), wxSize(150, 50));
 		m_txt9 = new wxTextCtrl(this, wxID_ANY, "Enter your Email:", wxPoint(50, 400), wxSize(200, 50));
 		m_txt9->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt10 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 400), wxSize(150, 50));
+		m_txt10 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 400), wxSize(150, 50));
 		m_txt11 = new wxTextCtrl(this, wxID_ANY, "Enter your Phone Number:", wxPoint(50, 500), wxSize(200, 50));
 		m_txt11->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt12 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 500), wxSize(150, 50));
+		m_txt12 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 500), wxSize(150, 50));
 		m_btn8 = new wxButton(this, 10010, "Enter", wxPoint(500, 500), wxSize(50, 50));
 		m_btn8->SetBackgroundColour(wxColor(115, 147, 179));
 		m_msg3 = new wxMessageDialog(this, "Saved! You May close the tab now.", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
+		m_msg4 = new wxMessageDialog(this, "Please fill all forms.", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
 	}
-	if (global == 3) {
-		m_txt4 = new wxTextCtrl(this, wxID_ANY, "Symptoms has been saved!\n(You may close the tab now)", wxPoint(400, 300), wxSize(400, 300));
-		m_txt4->SetBackgroundColour(wxColor(115, 147, 179));
+	if (global == 3) 
+	{
+		m_msg5 = new wxMessageDialog(this, "Symptom(s) have been saved! \nYou may close the tab now.", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
 	}
 	if (global == 4)
 	{
@@ -85,7 +86,8 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 		m_text4->SetBackgroundColour(wxColor(115, 147, 179));
 		m_txt14 = new wxTextCtrl(this, wxID_ANY, "Picture Will Update Soon", wxPoint(400, 300), wxSize(200, 190));
 	}
-	if (global == 5) {
+	if (global == 5) 
+	{
 		st0 = new wxStaticText(this, wxID_ANY, "Dental Service:", wxPoint(0, 10), wxSize(200, 100));
 		st0->SetBackgroundColour(wxColor(247, 191, 190));
 		st1 = new wxStaticText(this, wxID_ANY, "Covid Service:", wxPoint(200, 10), wxSize(200, 100));
@@ -95,44 +97,47 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 		st3 = new wxStaticText(this, wxID_ANY, "Child Health Service:", wxPoint(600, 10), wxSize(200, 100));
 		st3->SetBackgroundColour(wxColor(144, 238, 144));
 		st4 = new wxStaticText(this, wxID_ANY,
-			"Dental Service:\n\n*Tooth-color fillings\n\n*Major restorative\n\n*dentures, partials, bridges\n\n*bleaching\n\n*bonding\n\n*porcelain veneers\n\n*implants\n\n*periodontics\n\n*oral surgery", wxPoint(0, 150), wxSize(200, 300));
+			"Dental Service:\n\n*Tooth-Color Fillings\n\n*Major Restorative\n\n*Dentures, Partials, Bridges\n\n*Bleaching\n\n*Bonding\n\n*Porcelain Veneers\n\n*Implants\n\n*Periodontics\n\n*Oral Surgery", wxPoint(0, 150), wxSize(200, 300));
 		st4->SetBackgroundColour(wxColor(247, 191, 190));
-		st5 = new wxStaticText(this, wxID_ANY, "Covid Service:\n\n*Covid Test\n\n*Covid Booster Shot\n\n*Covid Vaccine\n\n*Covid ioslation\n\n*Covid Guidelines\n\n*Covid Health Service\n\n *Child Covid Care", wxPoint(200, 150), wxSize(200, 300));
+		st5 = new wxStaticText(this, wxID_ANY, "Covid Service:\n\n*Covid Test\n\n*Covid Booster Shot\n\n*Covid Vaccine\n\n*Covid Isolation\n\n*Covid Guidelines\n\n*Covid Health Service\n\n*Child Covid Care", wxPoint(200, 150), wxSize(200, 300));
 		st5->SetBackgroundColour(wxColor(234, 221, 202));
-		st6 = new wxStaticText(this, wxID_ANY, "Ophthalmologists Service:\n\n*Vision Care\n\n*Eye Exam\n\n*Vision tests\n\n*Prescribe Glasses\n\n*Contact Lenses\n\*Monitor eye condition\n\n*Dry Eyes\n\n*Glaucoma\n\n*Vision theraphy\n\n*Provide low vision aid", wxPoint(400, 150), wxSize(200, 300));
+		st6 = new wxStaticText(this, wxID_ANY, "Ophthalmologists Service:\n\n*Vision Care\n\n*Eye Exam\n\n*Vision tests\n\n*Prescribe Glasses\n\n*Contact Lenses\n\n*Monitor Eye Condition\n\n*Dry Eyes\n\n*Glaucoma\n\n*Vision Theraphy\n\n*Provide Low Vision Aid", wxPoint(400, 150), wxSize(200, 300));
 		st6->SetBackgroundColour(wxColor(115, 147, 179));
-		st7 = new wxStaticText(this, wxID_ANY, "Child Health Service:\n\n*New Family Consulation\n\n*Newborn Care\n\n*Immunizations\n\n*Pediatric Nutritioin\n\n*Physical Exam\n\n*Toddler Care\n\n*FAN Club\n\n*Obesity\n\n*Fevers,Cold, Flu", wxPoint(600, 150), wxSize(200, 300));
+		st7 = new wxStaticText(this, wxID_ANY, "Child Health Service:\n\n*New Family Consulation\n\n*Newborn Care\n\n*Immunizations\n\n*Pediatric Nutritioin\n\n*Physical Exam\n\n*Toddler Care\n\n*FAN Club\n\n*Obesity\n\n*Fevers, Cold, Flu", wxPoint(600, 150), wxSize(200, 300));
 		st7->SetBackgroundColour(wxColor(144, 238, 144));
 		b0 = new wxButton(this, 10012, "Make An Appointment Now", wxPoint(600, 500), wxSize(210, 20));
 		st8 = new wxStaticText(this, wxID_ANY, "We provide much more service than above \nQuestion/Concerns\nEmail Us at: GloriousHospital@GH.com\n Call us at:1(858)965-8888", wxPoint(0, 500), wxSize(400, 100));
 		st8->SetBackgroundColour(wxColor(139, 116, 189));
 	}
-	if (global == 6) {
+	if (global == 6) 
+	{
 		st13 = new wxStaticText(this, wxID_ANY, "Appointment Form", wxPoint(25, 10), wxSize(400, 50));
 		st13->SetBackgroundColour(wxColor(115, 147, 179));
 		st14 = new wxStaticText(this, wxID_ANY, "Enter A dates (M,T,W Th, F): ", wxPoint(50, 100), wxSize(200, 50));
 		st14->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt15 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 100), wxSize(150, 50));
+		m_txt15 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 100), wxSize(150, 50));
 		st15 = new wxStaticText(this, wxID_ANY, "Enter A Location:\n(808 OR BUMC):", wxPoint(50, 200), wxSize(200, 50));
 		st15->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt16 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 200), wxSize(150, 50));
+		m_txt16 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 200), wxSize(150, 50));
 		st16 = new wxStaticText(this, wxID_ANY, "Enter your name & ID:", wxPoint(50, 300), wxSize(200, 50));
 		st16->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt17 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 300), wxSize(150, 50));
+		m_txt17 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 300), wxSize(150, 50));
 		st17 = new wxStaticText(this, wxID_ANY, "Enter your Email:", wxPoint(50, 400), wxSize(200, 50));
 		st17->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt18 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 400), wxSize(150, 50));
+		m_txt18 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 400), wxSize(150, 50));
 		st18 = new wxStaticText(this, wxID_ANY, "Enter your Phone Number:", wxPoint(50, 500), wxSize(200, 50));
 		st18->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt19 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 500), wxSize(150, 50));
+		m_txt19 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 500), wxSize(150, 50));
 		st19 = new wxStaticText(this, wxID_ANY, "Enter your Service needed:", wxPoint(50, 600), wxSize(200, 50));
 		st19->SetBackgroundColour(wxColor(115, 147, 179));
-		m_txt20 = new wxTextCtrl(this, wxID_ANY, " ", wxPoint(300, 600), wxSize(150, 50));
+		m_txt20 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(300, 600), wxSize(150, 50));
 		m_btn9 = new wxButton(this, 10013, "Enter", wxPoint(500, 600), wxSize(50, 50));
 		m_btn9->SetBackgroundColour(wxColor(115, 147, 179));
 		m_msg3 = new wxMessageDialog(this, "Saved! We will email you the confirmation!", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
+		m_msg4 = new wxMessageDialog(this, "Please fill all forms.", "Results Confirmation", wxOK | wxCENTRE, wxDefaultPosition);
 	}
-	if (global == 7) {
+	if (global == 7) 
+	{
 		st9 = new wxStaticText(this, wxID_ANY, "Our Mission\n\nTo provide patient-centered healthcare with excellence in quality, service, and access.", wxPoint(0, 0), wxSize(800, 200));
 		st9->SetBackgroundColour(wxColor(250, 191, 190));
 		st10 = new wxStaticText(this, wxID_ANY,
@@ -244,37 +249,58 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 void cMain::OnEClicked(wxCommandEvent& evt)
 {
 	std::ofstream resultsFile("Output_File.txt");
-	resultsFile << "Appointment Date: " << m_txt4->GetValue() << std::endl;
-	resultsFile << "Location:" << m_txt6->GetValue() << std::endl;
-	resultsFile << "Name & ID: " << m_txt8->GetValue() << std::endl;
-	resultsFile << "Email: " << m_txt10->GetValue() << std::endl;
-	resultsFile << "Phone Number: " << m_txt12->GetValue() << std::endl;
-	resultsFile.close();
-	m_msg3->ShowModal();
-	evt.Skip();
+	if (m_txt4->GetValue().empty() == true || m_txt6->GetValue().empty() == true || m_txt8->GetValue().empty() == true || m_txt10->GetValue().empty() == true || m_txt12->GetValue().empty() == true)
+		m_msg4->ShowModal();
+	else
+	{
+		resultsFile << "Appointment Date: " << m_txt4->GetValue() << std::endl;
+		resultsFile << "Location:" << m_txt6->GetValue() << std::endl;
+		resultsFile << "Name & ID: " << m_txt8->GetValue() << std::endl;
+		resultsFile << "Email: " << m_txt10->GetValue() << std::endl;
+		resultsFile << "Phone Number: " << m_txt12->GetValue() << std::endl;
+		resultsFile.close();
+		m_msg3->ShowModal();
+		evt.Skip();
+	}
+	
 }
 void cMain::OnExit2(wxCommandEvent& evt)
 {
 	std::ofstream resultsFile("Output_File.txt");
-	resultsFile << "Appointment Date: " << m_txt15->GetValue() << std::endl;
-	resultsFile << "Location:" << m_txt16->GetValue() << std::endl;
-	resultsFile << "Name & ID: " << m_txt17->GetValue() << std::endl;
-	resultsFile << "Email: " << m_txt18->GetValue() << std::endl;
-	resultsFile << "Phone Number: " << m_txt19->GetValue() << std::endl;
-	resultsFile << "Service Requested: " << m_txt20->GetValue() << std::endl;
-	resultsFile.close();
-	m_msg3->ShowModal();
-	evt.Skip();
+	if (m_txt15->GetValue().empty() == true || m_txt16->GetValue().empty() == true || m_txt17->GetValue().empty() == true || m_txt18->GetValue().empty() == true || m_txt19->GetValue().empty() == true || m_txt20->GetValue().empty() == true)
+	{
+		m_msg4->ShowModal();
+	}
+	else
+	{
+		resultsFile << "Appointment Date: " << m_txt15->GetValue() << std::endl;
+		resultsFile << "Location:" << m_txt16->GetValue() << std::endl;
+		resultsFile << "Name & ID: " << m_txt17->GetValue() << std::endl;
+		resultsFile << "Email: " << m_txt18->GetValue() << std::endl;
+		resultsFile << "Phone Number: " << m_txt19->GetValue() << std::endl;
+		resultsFile << "Service Requested: " << m_txt20->GetValue() << std::endl;
+		resultsFile.close();
+		m_msg3->ShowModal();
+		evt.Skip();
+	}
 }
 void cMain::OnEnterButtonClicked(wxCommandEvent& evt)
 {
 	std::ofstream resultsFile("Output_File.txt");
-	resultsFile << "SYMPTOMS PROVIDED: " << m_txt1->GetValue() << std::endl;
-	resultsFile.close();
-	global = 3;
-	cMain* m_frame3 = nullptr;
-	m_frame3 = new cMain;
-	m_frame3->Show();
+	if (m_txt1->GetValue().empty() == true)
+	{
+		resultsFile << "SYMPTOMS PROVIDED: none" << std::endl;
+		resultsFile.close();
+		global = 3;
+		m_msg5->ShowModal();
+	}
+	else
+	{
+		resultsFile << "SYMPTOMS PROVIDED: " << m_txt1->GetValue() << std::endl;
+		resultsFile.close();
+		global = 3;
+		m_msg5->ShowModal();
+	}
 	evt.Skip();
 }
 
