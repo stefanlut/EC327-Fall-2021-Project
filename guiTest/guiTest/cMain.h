@@ -7,6 +7,7 @@ class cMain : public wxFrame
 private:
 	bool has_COVID;
 	bool button_Pressed;
+	std::string CurrentDate();
 public:
 	cMain();
 	~cMain();
