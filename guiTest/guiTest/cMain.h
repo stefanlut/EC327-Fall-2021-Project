@@ -7,7 +7,7 @@ extern int global;
 class cMain : public wxFrame
 {
 private:
-	bool has_COVID;
+	bool has_COVID = false;
 	bool button_Pressed = false;
 	wxToolBar* m_ToolBar = nullptr;
 	wxMenuBar* m_MenuBar = nullptr;
@@ -47,6 +47,13 @@ public:
 	void OnEClicked(wxCommandEvent& evt);
 	void OnExit(wxCommandEvent& evt);
 	void OnExit2(wxCommandEvent& evt);
+	
+	cMain* m_frame4 = nullptr;
+	cMain* m_frame5 = nullptr;
+	cMain* m_frame6 = nullptr;
+	cMain* m_frame7 = nullptr;
+	
+	
 };
 
 

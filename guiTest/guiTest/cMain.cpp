@@ -163,7 +163,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "TestGUI - EC327", wxPoint(30, 30), 
 void cMain::OnMenu1(wxCommandEvent& evt)
 {
 	global = 5;
-	cMain* m_frame5 = nullptr;
+	
 	m_frame5 = new cMain;
 	m_frame5->Show();
 	evt.Skip();
@@ -172,7 +172,7 @@ void cMain::OnMenu1(wxCommandEvent& evt)
 void cMain::OnMenu2(wxCommandEvent& evt)
 {
 	global = 6;
-	cMain* m_frame6 = nullptr;
+	
 	m_frame6 = new cMain;
 	m_frame6->Show();
 	evt.Skip();
@@ -181,7 +181,7 @@ void cMain::OnMenu2(wxCommandEvent& evt)
 void cMain::OnMenu3(wxCommandEvent& evt)
 {
 	global = 4;
-	cMain* m_frame4 = nullptr;
+	
 	m_frame4 = new cMain;
 	m_frame4->Show();
 	evt.Skip();
@@ -196,15 +196,74 @@ void cMain::OnMenu4(wxCommandEvent& evt)
 void cMain::OnMenu5(wxCommandEvent& evt)
 {
 	global = 7;
-	cMain* m_frame7 = nullptr;
+	
 	m_frame7 = new cMain;
 	m_frame7->Show();
 	evt.Skip();
 }
 cMain::~cMain()
 {
-	delete m_btn1;	delete m_btn2;	delete m_btn3;	delete m_text;	delete m_msg; delete m_btn3; delete m_btn4;	delete m_btn5;	delete m_btn6 ; delete m_btn7; delete m_btn8; delete m_btn9; delete m_text; delete m_text1; delete m_text2; delete m_text3; delete m_text4; delete m_msg1; delete m_msg2; delete m_msg3; delete m_msg4; delete m_msg5; delete m_msg6; delete m_txt1; delete m_txt2; delete m_txt3; delete m_txt4; delete m_txt5; delete m_txt6; delete m_txt7; delete m_txt8; delete m_txt9; delete m_txt10; delete
-		m_txt11; delete m_txt12; delete m_txt13; delete m_txt14; delete m_txt15; delete	m_txt16; delete m_txt17; delete m_txt18; delete m_txt19; delete m_txt20; delete b0; delete st0; delete st1; delete st2; delete st3; delete	st4; delete st5; delete st6; delete st7; delete st8; delete	st9; delete st10; delete st11; delete st12; delete st13; delete st14; delete st15; delete st16; delete st17; delete st18; delete st19; delete t0; delete chc_date; delete chc_loc;
+	delete m_btn1;
+	delete m_btn2;
+	delete m_btn3;
+	delete m_text;
+	delete m_msg;
+	delete m_txt2;
+	delete m_txt1;
+	delete m_btn4;
+	delete m_text1;
+	delete m_btn5;
+	delete m_msg5;
+	
+	
+	if (m_frame4 != nullptr)
+	{
+		delete m_text3;
+		delete m_txt13;
+		delete m_text4;
+		delete m_txt14;
+	}
+	if (m_frame5 != nullptr)
+	{
+		delete st0;
+		delete st1;
+		delete st2;
+		delete st3;
+		delete st4;
+		delete st5;
+		delete st6;
+		delete st7;
+		delete b0;
+		delete st8;
+	}
+	if (m_frame6 != nullptr)
+	{
+		delete st13;
+		delete st14;
+		delete chc_date;
+		delete st15;
+		delete chc_loc;
+		delete st16;
+		delete m_txt17;
+		delete st17;
+		delete m_txt18;
+		delete st18;
+		delete m_txt19;
+		delete st19;
+		delete chc_serv;
+		delete m_btn9;
+		delete m_msg3;
+		delete m_msg4;
+		delete m_msg6;
+	}
+	if (m_frame7 != nullptr)
+	{
+		delete st9;
+		delete st10;
+		delete st11;
+		delete st12;
+	}
+	
 }
 
 void cMain::OnScheduleButtonClicked(wxCommandEvent& evt)
@@ -233,7 +292,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 {
 	if (button_Pressed && has_COVID)
 	{
-		std::ofstream resultsFile("Output_File.txt"); 
+		std::ofstream resultsFile("COVID_Survey_File.txt"); 
 		resultsFile << "Date of Test: " << CurrentDate() << std::endl;
 		resultsFile << "Has COVID-19: " << "Yes" << std::endl;
 		resultsFile.close();
@@ -241,7 +300,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 	}
 	else if (button_Pressed && !has_COVID)
 	{
-		std::ofstream resultsFile("Output_File.txt"); 
+		std::ofstream resultsFile("COVID_Survey_File.txt"); 
 		resultsFile << "Date of Test: " << CurrentDate() << std::endl;
 		resultsFile << "Has COVID-19: " << "No" << std::endl;
 		resultsFile.close();
@@ -252,7 +311,7 @@ void cMain::OnSaveButtonClicked(wxCommandEvent& evt)
 
 void cMain::OnEClicked(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("Output_File.txt");
+	std::ofstream resultsFile("Vaccine_File.txt");
 	if (chc_date->GetSelection() == wxNOT_FOUND || chc_loc->GetSelection() == wxNOT_FOUND || m_txt8->GetValue().empty() == true || m_txt10->GetValue().empty() == true || m_txt12->GetValue().empty() == true)
 		m_msg4->ShowModal();
 	else
@@ -270,7 +329,7 @@ void cMain::OnEClicked(wxCommandEvent& evt)
 }
 void cMain::OnExit2(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("Output_File.txt");
+	std::ofstream resultsFile("Appointment_File.txt");
 	if (chc_date->GetSelection() == wxNOT_FOUND || chc_loc->GetSelection() == wxNOT_FOUND || m_txt17->GetValue().empty() == true || m_txt18->GetValue().empty() == true || m_txt19->GetValue().empty() == true || chc_serv->GetSelection() == wxNOT_FOUND)
 	{
 		m_msg4->ShowModal();
@@ -290,7 +349,7 @@ void cMain::OnExit2(wxCommandEvent& evt)
 }
 void cMain::OnEnterButtonClicked(wxCommandEvent& evt)
 {
-	std::ofstream resultsFile("Output_File.txt");
+	std::ofstream resultsFile("Symptoms_File.txt");
 	if (m_txt1->GetValue().empty() == true)
 	{
 		resultsFile << "SYMPTOMS PROVIDED: none" << std::endl;
